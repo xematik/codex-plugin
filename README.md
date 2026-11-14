@@ -7,7 +7,29 @@ codex plugin marketplace add xematik/codex-plugin
 codex plugin add xematik-diagram-review@xematik
 ```
 
-Download your platform's `xematik-channel` binary and `SHA256SUMS` from [releases](https://github.com/xematik/codex-plugin/releases). On Linux check with `sha256sum -c SHA256SUMS --ignore-missing`; on macOS use `shasum -a 256 -c SHA256SUMS --ignore-missing`. Put the executable on your PATH as `xematik-channel` (`xematik-channel.exe` on Windows), then run `xematik-channel login` and open the printed link. Restart Codex and sign in to Xematik when prompted. Ask Codex to use the `setup` skill for help, then ask it to open a diagram review. The binary supports Linux and macOS amd64/arm64 and Windows amd64.
+Download your platform's `xematik-channel` binary and `SHA256SUMS` from [releases](https://github.com/xematik/codex-plugin/releases). The binary supports Linux and macOS amd64/arm64 and Windows amd64. On Linux check with `sha256sum -c SHA256SUMS --ignore-missing`; on macOS use `shasum -a 256 -c SHA256SUMS --ignore-missing`. Put the executable on your PATH as `xematik-channel` (`xematik-channel.exe` on Windows).
+
+For Linux x86-64, run these commands from the directory containing the downloaded files:
+
+```sh
+sha256sum -c SHA256SUMS --ignore-missing
+mkdir -p ~/.local/bin
+chmod +x xematik-channel_linux_amd64
+mv xematik-channel_linux_amd64 ~/.local/bin/xematik-channel
+export PATH="$HOME/.local/bin:$PATH"
+```
+
+Continue only if checksum verification reports `xematik-channel_linux_amd64: OK`.
+
+1. Run `xematik-channel login` and open the link it prints.
+2. For Bash, add the following line to `~/.bashrc` so future terminals can find the bridge:
+
+   ```sh
+   export PATH="$HOME/.local/bin:$PATH"
+   ```
+
+3. Restart Codex and sign in to Xematik when prompted.
+4. Ask Codex: “Use the Xematik setup skill, then open a diagram review.”
 
 For another Xematik server, clone this repository, change the URL in `mcp.json` to your server's `/mcp` endpoint, then add that local directory with `codex plugin marketplace add ./codex-plugin` and install the plugin using the command above. Set `XEMATIK_URL` to the server origin in the environment before running the bridge. Do not install the public marketplace as well under the same name.
 
