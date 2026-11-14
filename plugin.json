@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "xematik-diagram-review",
+  "version": "0.4.0",
+  "description": "Review architecture diagrams with Xematik.",
+  "author": {"name": "Xematik"},
+  "repository": "https://github.com/xematik/codex-plugin",
+  "extensions": {"com.openai": {"onboardingSkill": "./skills/setup/SKILL.md"}}
+}
